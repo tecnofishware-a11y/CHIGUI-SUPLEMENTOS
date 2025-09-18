@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>CHIGUI | Productos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- OwlCarousel -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Bootstrap (base del template) -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Estilos del sitio -->
+  <link href="css/style.min.css" rel="stylesheet">
+
+  <!-- Estilos de la página de productos -->
+  <link href="css/products.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========================= NAVBAR ========================= -->
+  <div class="container-fluid p-0 nav-bar">
+    <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+      <a href="index.html" class="navbar-brand px-lg-4 m-0">
+        <h1 class="m-0 display-4 text-uppercase text-white">CHIGUI</h1>
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav ml-auto p-4">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="service.html" class="nav-item nav-link">Service</a>
+          <a href="testimonial.html" class="nav-item nav-link">Testimonial</a>
+          <a href="products.html" class="nav-item nav-link active">Productos</a>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ========================= PAGE HEADER ========================= -->
+  <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+      <h2 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Nuestros Productos</h2>
+      <div class="d-inline-flex mb-lg-5">
+        <p class="m-0 text-white"><a class="text-white" href="index.html">Home</a></p>
+        <p class="m-0 text-white px-2">/</p>
+        <p class="m-0 text-white">Productos</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= PROMO BAR ========================= -->
+  <div class="container-fluid promo-bar promo-bar--marquee">
+    <div class="container">
+      <div class="promo-marquee" role="region" aria-label="Promociones">
+        <div class="promo-track">
+          <div class="promo-seq">
+            <div class="promo-item"><i class="fa-solid fa-truck-fast"></i>Envío GRATIS desde <span class="promo-chip">$120.000</span></div>
+            <div class="promo-item"><i class="fa-regular fa-clock"></i>Entrega <strong>24–72h</strong></div>
+            <div class="promo-item"><i class="fa-regular fa-life-ring"></i>Soporte:
+              <a class="promo-link" href="mailto:chiguisuplementos@gmail.com">chiguisuplementos@gmail.com</a>
+            </div>
+          </div>
+          <div class="promo-seq" aria-hidden="true">
+            <div class="promo-item"><i class="fa-solid fa-truck-fast"></i>Envío GRATIS desde <span class="promo-chip">$120.000</span></div>
+            <div class="promo-item"><i class="fa-regular fa-clock"></i>Entrega <strong>24–72h</strong></div>
+            <div class="promo-item"><i class="fa-regular fa-life-ring"></i>Soporte:
+              <a class="promo-link" href="mailto:chiguisuplementos@gmail.com">chiguisuplementos@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= CONTROLES ========================= -->
+  <section class="container py-4">
+    <div class="row align-items-center">
+      <!-- Search -->
+      <div class="col-lg-7 col-md-7 mb-3 mb-md-0">
+        <div class="input-group">
+          <input id="product-search" type="search" class="form-control"
+                 placeholder="Buscar producto, marca o referencia..." aria-label="Buscar productos">
+          <div class="input-group-append">
+            <button id="btn-search" class="btn btn-outline-secondary" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sort + Cart -->
+      <div class="col-lg-5 col-md-5 text-md-right">
+        <div class="d-inline-block mr-2">
+          <select id="sort-select" class="form-control form-control-sm">
+            <option value="default">Orden: Relevancia</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="newest">Novedades</option>
+          </select>
+        </div>
+
+        <div class="d-inline-block">
+          <button id="cart-button" class="btn btn-outline-primary position-relative"
+                  data-toggle="modal" data-target="#cartModal" title="Ver carrito">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="badge badge-danger position-absolute"
+                  style="top:-6px; right:-6px; font-size:0.65rem;">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CATEGORÍAS ========================= -->
+  <section class="container py-5 categories-section">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2 class="section-title m-0">Categorías</h2>
+      <a href="#" class="see-all-link">Ver Todas las Categorías</a>
+    </div>
+
+    <div class="position-relative">
+      <button class="cat-nav cat-prev" type="button" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="cat-nav cat-next" type="button" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+
+      <div class="owl-carousel cat-carousel">
+        <a href="javascript:void(0)" class="cat-item is-active" data-filter="all"><div class="cat-circle"><img src="img/categories/c008.png" alt="Todos"></div><span>Todos</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="proteinas"><div class="cat-circle"><img src="img/categories/c001.png" alt="Proteínas"></div><span>Proteínas</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="creatina"><div class="cat-circle"><img src="img/categories/c002.png" alt="Creatina"></div><span>Creatina</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="vitaminas"><div class="cat-circle"><img src="img/categories/c003.png" alt="Vitaminas"></div><span>Vitaminas</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="ropa"><div class="cat-circle"><img src="img/categories/c007.png" alt="Ropa"></div><span>Ropa</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="quemadores"><div class="cat-circle"><img src="img/categories/c006.png" alt="Quemadores"></div><span>Quemadores</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="pre-entrenos"><div class="cat-circle"><img src="img/categories/c004.png" alt="Pre–Entrenos"></div><span>Pre–Entrenos</span></a>
+        <a href="javascript:void(0)" class="cat-item" data-filter="ganadores"><div class="cat-circle"><img src="img/categories/c005.png" alt="Ganadores"></div><span>Ganadores</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PRODUCT GRID ========================= -->
+  <main class="container pb-5">
+    <div class="text-center mb-4">
+      <h2 class="h1 text-uppercase">Catálogo Chigui</h2>
+      <p class="text-muted">Suplementos, vitaminas y accesorios seleccionados para ti</p>
+    </div>
+
+    <div id="product-grid" class="row g-4">
+      <!-- ====== p001–p025 ====== -->
+      <!-- p001 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p001" data-category="pre-entrenos" data-price="165000" data-title="DRAGON PHARMA Venom Inferno Extreme High Stim Pre-Workout">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p001.jpg" class="card-img-top product-img" alt="DRAGON PHARMA Venom Inferno Extreme High Stim Pre-Workout">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p001"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p001"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Venom Inferno Extreme</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 165.000</span></div>
+            <p class="card-text text-muted small">Pre-entreno alta intensidad con cafeína anhidra + Infinergy, L-tirosina y beta alanina. 40 porciones. Vegano y sin gluten.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p002 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p002" data-category="quemadores" data-price="110000" data-title="Insane Labz Yohimbine HCL – The Asylum Cabinet">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p002.jpg" class="card-img-top product-img" alt="Insane Labz Yohimbine HCL">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p002"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p002"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Yohimbine HCL</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Energía, apoyo a pérdida de peso y libido. 120 cápsulas.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p003 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p003" data-category="pre-entrenos" data-price="160000" data-title="Insane Labz Psychotic – Fruit Punch">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p003.jpg" class="card-img-top product-img" alt="Insane Labz Psychotic Fruit Punch">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p003"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p003"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Psychotic – Fruit Punch</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 160.000</span></div>
+            <p class="card-text text-muted small">Pre-entreno alto en estimulantes para energía, enfoque y pumps. 35 porciones.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p004 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p004" data-category="vitaminas" data-price="77000" data-title="Proscience Omega 3 DHA+EPA (120 softgels)">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p004.jpg" class="card-img-top product-img" alt="Proscience Omega 3 DHA+EPA 120 softgels">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p004"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p004"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Omega 3 DHA+EPA (120)</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 77.000</span></div>
+            <p class="card-text text-muted small">Salud cardiovascular y cerebral. 2.000 mg por porción.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p005 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p005" data-category="pre-entrenos" data-price="125000" data-title="Smartmuscle Electron Pre-Entreno 600 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p005.jpg" class="card-img-top product-img" alt="Smartmuscle Electron Pre-Entreno 600 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p005"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p005"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Electron Pre-Entreno 600g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 125.000</span></div>
+            <p class="card-text text-muted small">L-Citrulina, Beta Alanina y Cafeína anhidra. ~30 porciones.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p006 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p006" data-category="creatina" data-price="179000" data-title="MuscleTech Platinum 100% Creatine 400 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p006.jpg" class="card-img-top product-img" alt="MuscleTech Platinum 100% Creatine 400 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p006"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p006"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Platinum Creatine 400g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 179.000</span></div>
+            <p class="card-text text-muted small">Creatina monohidratada micronizada. 80 servicios.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p007 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p007" data-category="creatina" data-price="110000" data-title="Atomic Creatine HCL Postworkout 600 g – Uva">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p007.jpg" class="card-img-top product-img" alt="Atomic Creatine HCL Postworkout 600 g – Uva">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p007"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p007"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Atomic Creatine HCL 600g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Creatina HCL 5g + Glutamina + Leucina. Sabor uva. ~60 porciones.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p008 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p008" data-category="creatina" data-price="230000" data-title="Nutrex Creatina Monohidratada 1000 g (Unflavored)">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p008.jpg" class="card-img-top product-img" alt="Nutrex Creatina Monohidratada 1000 g (Unflavored)">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p008"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p008"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Creatina Nutrex 1000g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 230.000</span></div>
+            <p class="card-text text-muted small">Creatina pura micronizada. 200 porciones.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p009 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p009" data-category="creatina" data-price="150000" data-title="Crea Stack All-in-One Creatine Complex 600 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p009.jpg" class="card-img-top product-img" alt="Crea Stack All-in-One Creatine Complex 600 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p009"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p009"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Crea Stack 600g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 150.000</span></div>
+            <p class="card-text text-muted small">Complejo “todo en uno” con almidón hidrolizado. 60 porciones.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p010 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p010" data-category="vitaminas" data-price="179000" data-title="MuscleTech Platinum 100% Caffeine (125 tabs)">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p010.jpg" class="card-img-top product-img" alt="MuscleTech Platinum 100% Caffeine (125 tabs)">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p010"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p010"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Platinum 100% Caffeine</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 179.000</span></div>
+            <p class="card-text text-muted small">220 mg de cafeína anhidra por tableta. 125 tabs.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p011 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p011" data-category="creatina" data-price="220000" data-title="ON Micronized Creatine Powder 600 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p011.jpg" class="card-img-top product-img" alt="ON Micronized Creatine Powder 600 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p011"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p011"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">ON Creatine 600g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 220.000</span></div>
+            <p class="card-text text-muted small">Creatina monohidratada micronizada. 120 servicios.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p012 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p012" data-category="creatina" data-price="183000" data-title="MuscleTech Cell-Tech Creatine – Fruit Punch 3 lb">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p012.jpg" class="card-img-top product-img" alt="MuscleTech Cell-Tech Creatine – Fruit Punch 3 lb">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p012"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p012"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Cell-Tech Creatine 3lb</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 183.000</span></div>
+            <p class="card-text text-muted small">10 g creatina + 5 g aminos + 200 mg ALA. Fruit Punch.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p013 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p013" data-category="creatina" data-price="135000" data-title="Creatina Monohidratada Dragon Pharma 300 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p013.jpg" class="card-img-top product-img" alt="Creatina Monohidratada Dragon Pharma 300 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p013"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p013"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Creatina Dragon Pharma 300g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 135.000</span></div>
+            <p class="card-text text-muted small">Apoya fuerza, potencia, recuperación y antioxidantes.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p014 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p014" data-category="creatina" data-price="109000" data-title="IMN BULL Creapure 408 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p014.jpg" class="card-img-top product-img" alt="IMN BULL Creapure 408 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <!-- ✅ class corregido -->
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p014">
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p014">
+                  <i class="fas fa-cart-plus"></i> Añadir
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">IMN BULL Creapure</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 109.000</span></div>
+            <p class="card-text text-muted small">Creatina monohidrato (Creapure) + niacina. 68 servicios.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p015 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p015" data-category="creatina" data-price="50000" data-title="Creatina Monohidratada 400 g / 150 g">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p015.jpg" class="card-img-top product-img" alt="Creatina Monohidratada 400 g / 150 g">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p015"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p015"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Creatina 400g / 150g</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">Desde $ 50.000</span></div>
+            <p class="card-text text-muted small">Presentaciones: 400 g ($120.000) y 150 g ($50.000).</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p016 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p016" data-category="proteinas" data-price="55000" data-title="Nutramerican Protein Pancake">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p016.jpg" class="card-img-top product-img" alt="Protein Pancake Nutramerican">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p016"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p016"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Protein Pancake</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 55.000</span></div>
+            <p class="card-text text-muted small">20 g proteína por porción. Vainilla–canela.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p017 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p017" data-category="ganadores" data-price="86000" data-title="TNT Mega Mass Gainer 3 lb – Vainilla">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p017.jpg" class="card-img-top product-img" alt="TNT Mega Mass Gainer 3 lb – Vainilla">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p017"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p017"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">TNT Mega Mass 3lb</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 86.000</span></div>
+            <p class="card-text text-muted small">1272 kcal, 81 g proteína, creatina + enzimas.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p018 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p018" data-category="proteinas" data-price="280000" data-title="Smart Nutrition Whey Pure 2.27 kg – Vainilla">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p018.jpg" class="card-img-top product-img" alt="Smart Nutrition Whey Pure 2.27 kg – Vainilla">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p018"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p018"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Whey Pure 2.27kg</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 280.000</span></div>
+            <p class="card-text text-muted small">Bajo en grasa. Excelente fuente de proteína.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p019 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p019" data-category="ganadores" data-price="90000" data-title="Proscience Smart Gainer">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p019.jpg" class="card-img-top product-img" alt="Proscience Smart Gainer">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p019"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p019"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Smart Gainer</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 90.000</span></div>
+            <p class="card-text text-muted small">910 kcal, 44 g proteína, 165 g carb.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p020 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p020" data-category="ganadores" data-price="150000" data-title="Nutramerican Bi Pro Mass">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p020.jpg" class="card-img-top product-img" alt="Nutramerican Bi Pro Mass">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p020"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p020"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Bi Pro Mass</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 150.000</span></div>
+            <p class="card-text text-muted small">40 g proteína, 1000 mg HMB, 7 g BCAA por porción.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p021 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p021" data-category="proteinas" data-price="460000" data-title="Optimum Nutrition Gold Standard 100% Whey – Vainilla">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p021.jpg" class="card-img-top product-img" alt="Optimum Nutrition Gold Standard 100% Whey – Vainilla">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p021"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p021"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Gold Standard 100% Whey</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 460.000</span></div>
+            <p class="card-text text-muted small">24 g proteína, 5.5 g BCAA. Recuperación muscular.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p022 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p022" data-category="proteinas" data-price="326000" data-title="Dymatize Elite 100% Whey 5 lb – Vainilla">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p022.jpg" class="card-img-top product-img" alt="Dymatize Elite 100% Whey 5 lb – Vainilla">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p022"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p022"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Dymatize Elite Whey 5lb</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 326.000</span></div>
+            <p class="card-text text-muted small">25 g proteína (conc + aisl + hidrolizada). 67 porciones.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p023 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p023" data-category="proteinas" data-price="210000" data-title="Bi Pro Classic 3 lb">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p023.jpg" class="card-img-top product-img" alt="Bi Pro Classic 3 lb">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p023"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p023"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Bi Pro Classic 3lb</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 210.000</span></div>
+            <p class="card-text text-muted small">40 g proteína por scoop. 0 g de azúcar añadida.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p024 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p024" data-category="proteinas" data-price="370000" data-title="MuscleTech Nitro-Tech 100% Whey Gold">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p024.jpg" class="card-img-top product-img" alt="MuscleTech Nitro-Tech 100% Whey Gold">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p024"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p024"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Nitro-Tech Whey Gold</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 370.000</span></div>
+            <p class="card-text text-muted small">24 g proteína, 5.4 g BCAA y 4 g glutamina.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- p025 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="p025" data-category="ganadores" data-price="160000" data-title="SMART Proscience Gainer 2.7 kg – Vainilla Gourmet">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/p025.jpg" class="card-img-top product-img" alt="SMART Proscience Gainer 2.7 kg – Vainilla Gourmet">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="p025"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="p025"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">SMART Gainer 2.7kg</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 160.000</span></div>
+            <p class="card-text text-muted small">910 kcal, 44 g proteína, 165 g carb por porción.</p>
+          </div>
+        </div>
+      </article>
+      <!-- ====== /p001–p025 ====== -->
+
+      <!-- ====== r001–r024 (ROPA) ====== -->
+
+      <!-- r001 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r001" data-category="ropa" data-price="60000" data-title="Camiseta Dri-FIT Gama Alta Caballero">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r001.jpg" class="card-img-top product-img" alt="Camiseta Dri-FIT gama alta caballero">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r001"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r001"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Camiseta Dri-FIT</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 60.000</span></div>
+            <p class="card-text text-muted small">Microfibra poliéster con tecnología Dri-FIT: absorbe sudor y seca rápido. Tallas: M, L, XL, XXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r002 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r002" data-category="ropa" data-price="110000" data-title="Conjunto chaqueta + short bolsillos lateral">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r002.jpg" class="card-img-top product-img" alt="Conjunto chaqueta y short bolsillos">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r002"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r002"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Chaqueta + Short</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Tela ultra suave y elástica; bolsillos laterales con cremallera y ocultos. Uso diario/entreno. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r003 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r003" data-category="ropa" data-price="70000" data-title="Lycras suplex cintura alta talla única">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r003.jpg" class="card-img-top product-img" alt="Lycras suplex">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r003"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r003"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Lycras Suplex</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 70.000</span></div>
+            <p class="card-text text-muted small">Cintura alta, elásticas y cómodas. Yoga, fitness o casual. Talla única; efecto push-up.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r004 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r004" data-category="ropa" data-price="78000" data-title="Conjunto Dri-FIT hombre camisilla con capucha">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r004.jpg" class="card-img-top product-img" alt="Conjunto Dri-FIT hombre camisilla con capucha">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r004"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r004"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Conjunto Dri-FIT Hombre</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 78.000</span></div>
+            <p class="card-text text-muted small">Tejido suave y elástico; ideal para gym, running, básquet, fútbol o uso casual. Tallas: M, L, XL, XXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r005 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r005" data-category="ropa" data-price="75000" data-title="Short de bolsillo realza glúteos">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r005.jpg" class="card-img-top product-img" alt="Short de bolsillo realza glúteos">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r005"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r005"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Short Realza Glúteos</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 75.000</span></div>
+            <p class="card-text text-muted small">Tela elástica transpirable, fruncido posterior y bolsillos cargo laterales. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r006 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r006" data-category="ropa" data-price="110000" data-title="Conjunto Alo Yoga top + leggings">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r006.jpg" class="card-img-top product-img" alt="Conjunto Alo Yoga top y leggings">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r006"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r006"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Conjunto Alo Yoga</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Top corto + leggings de talle alto. Tejido elástico y transpirable para actividad física. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r007 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r007" data-category="ropa" data-price="120000" data-title="Enterizo Alo Yoga cremallera frontal">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r007.jpg" class="card-img-top product-img" alt="Enterizo Alo Yoga">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r007"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r007"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Enterizo Alo Yoga</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 120.000</span></div>
+            <p class="card-text text-muted small">Enterizo corto con cuello alto y cierre frontal. Colores: negro, beige, azul claro y marrón. Tallas: SM, LXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r008 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r008" data-category="ropa" data-price="75000" data-title="Bomber Jacket de dama">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r008.jpg" class="card-img-top product-img" alt="Bomber Jacket de dama">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r008"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r008"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Bomber Jacket Dama</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 75.000</span></div>
+            <p class="card-text text-muted small">Sintética (poliéster/nylon): ligera, de secado rápido y resistente a arrugas. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r009 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r009" data-category="ropa" data-price="110000" data-title="Enterizo corto Alo Yoga">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r009.jpg" class="card-img-top product-img" alt="Enterizo corto Alo Yoga">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r009"><i class="fas a-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r009"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Enterizo Corto Alo Yoga</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Tejidos técnicos: poliéster, nylon y spandex para ajuste y movilidad. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r010 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r010" data-category="ropa" data-price="55000" data-title="Chaleco deportivo">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r010.jpg" class="card-img-top product-img" alt="Chaleco deportivo">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r010"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r010"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Chaleco Deportivo</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 55.000</span></div>
+            <p class="card-text text-muted small">Transpirable y elástico; poliéster o mezclas con algodón/elastano. Tallas: S, M, L.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r011 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r011" data-category="ropa" data-price="95000" data-title="Conjunto tipo tennis falda short">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r011.jpg" class="card-img-top product-img" alt="Conjunto tipo tennis falda short">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r011"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r011"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Conjunto Tipo Tennis</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 95.000</span></div>
+            <p class="card-text text-muted small">Falda short + camiseta en tejidos técnicos (poliéster/nylon + elastano). Tallas: SM, TXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r012 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r012" data-category="ropa" data-price="60000" data-title="Chaleco deportivo importado">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r012.jpg" class="card-img-top product-img" alt="Chaleco deportivo importado">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r012"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r012"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Chaleco Importado</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 60.000</span></div>
+            <p class="card-text text-muted small">Poliéster o mezcla con spandex para transpirabilidad y elasticidad. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r013 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r013" data-category="ropa" data-price="100000" data-title="Conjunto Alo Yoga falda y top">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r013.jpg" class="card-img-top product-img" alt="Conjunto Alo Yoga falda y top">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r013"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r013"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Conjunto Alo Yoga Falda+Top</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 100.000</span></div>
+            <p class="card-text text-muted small">Tejido técnico elástico y transpirable (poliéster/elastano/nylon). Tallas: SM, LXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r014 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r014" data-category="ropa" data-price="75000" data-title="Falda Alo Yoga americana">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r014.jpg" class="card-img-top product-img" alt="Falda Alo Yoga americana">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r014"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r014"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Falda Alo Yoga</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 75.000</span></div>
+            <p class="card-text text-muted small">Poliéster + spandex + nylon para ajuste, transpirabilidad y comodidad. Tallas: S, M, L, XL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r015 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r015r" data-category="ropa" data-price="65000" data-title="Pantaloneta running con lycra debajo (hombre)">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r015.jpg" class="card-img-top product-img" alt="Pantaloneta running con lycra debajo hombre">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r015r"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r015r"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Pantaloneta Running Hombre</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 65.000</span></div>
+            <p class="card-text text-muted small">Short con licra interna; mezcla poliéster/elastano para elasticidad y confort. Tallas: M a XXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r016 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r016" data-category="ropa" data-price="110000" data-title="Enterizo tipo tennis short lycra debajo">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r016.jpg" class="card-img-top product-img" alt="Enterizo tipo tennis short lycra debajo">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r016"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r016"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Enterizo Tipo Tennis</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Short con lycra debajo, copas removibles y control de abdomen. Tallas: SM, ML.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r017 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r017" data-category="ropa" data-price="110000" data-title="Conjunto perchado dama">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r017.jpg" class="card-img-top product-img" alt="Conjunto perchado dama">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r017"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r017"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Conjunto Perchado Dama</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 110.000</span></div>
+            <p class="card-text text-muted small">Buzo/chaqueta + pantalón con interior afelpado. Mezcla algodón/poliéster. Tallas: M a XXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r018 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r018" data-category="ropa" data-price="65000" data-title="Short 2 en 1 capa exterior + lycra interna">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r018.jpg" class="card-img-top product-img" alt="Short 2 en 1 capa exterior e interior de lycra">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r018"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r018"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Short 2 en 1</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 65.000</span></div>
+            <p class="card-text text-muted small">Capa exterior suelta + lycra interior para mayor comodidad durante el ejercicio.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r019 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r019r" data-category="ropa" data-price="48000" data-title="Camisetas entrenamiento Dri-FIT">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r019.jpg" class="card-img-top product-img" alt="Camisetas entrenamiento Dri-FIT">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r019r"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r019r"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Camiseta Entrenamiento</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 48.000</span></div>
+            <p class="card-text text-muted small">Poliéster de alta calidad con tecnología de absorción del sudor (Dri-FIT). Tejido de punto elástico.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r020 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r020" data-category="ropa" data-price="75000" data-title="Top/chaqueta manga larga con cierre">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r020.jpg" class="card-img-top product-img" alt="Top deportivo manga larga con cierre">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r020"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r020"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Top Manga Larga con Cierre</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 75.000</span></div>
+            <p class="card-text text-muted small">Manga larga y cuello alto con cremallera; tejido elástico y suave para entreno o uso casual.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r021 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r021r" data-category="ropa" data-price="55000" data-title="Camiseta deportiva secado rápido">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r021.jpg" class="card-img-top product-img" alt="Camiseta deportiva secado rápido">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r021r"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r021r"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Camiseta Deportiva</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 55.000</span></div>
+            <p class="card-text text-muted small">Poliéster o mezcla algodón/poliéster: ligera, transpirable y de secado rápido.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r022 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r022" data-category="ropa" data-price="48000" data-title="Camisillas Dri-FIT importadas 1.1">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r022.jpg" class="card-img-top product-img" alt="Camisillas Dri-FIT importadas 1.1">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r022"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r022"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Camisillas Dri-FIT 1.1</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 48.000</span></div>
+            <p class="card-text text-muted small">Tejido técnico para absorción de humedad y transpirabilidad. Tallas: M, L, XL, XXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r023 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r023" data-category="ropa" data-price="130000" data-title="Conjunto chaqueta y sudadera importada 1.1">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r023.jpg" class="card-img-top product-img" alt="Conjunto chaqueta y sudadera importada 1.1">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r023"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r023"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Chaqueta + Sudadera 1.1</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 130.000</span></div>
+            <p class="card-text text-muted small">Conjunto deportivo/casual en algodón/poliéster. Tallas: M, L, XL, XXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- r024 -->
+      <article class="col-lg-4 col-md-6 product-item" data-id="r024" data-category="ropa" data-price="130000" data-title="Conjunto Alo Yoga importado">
+        <div class="card product-card border-0 shadow h-100">
+          <div class="product-img-container position-relative">
+            <img src="img/products/r024.jpg" class="card-img-top product-img" alt="Conjunto Alo Yoga importado">
+            <div class="product-overlay position-absolute w-100 h-100 top-0 left-0 d-flex align-items-end justify-content-center p-3">
+              <div class="w-100 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light quickview-btn" data-id="r024"><i class="fas fa-eye"></i> Ver</button>
+                <button class="btn btn-sm btn-primary add-to-cart ml-2" data-id="r024"><i class="fas fa-cart-plus"></i> Añadir</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title text-uppercase mb-1">Conjunto Alo Yoga Importado</h5>
+            <div class="price mb-2"><span class="price-current font-weight-bold">$ 130.000</span></div>
+            <p class="card-text text-muted small">Top deportivo + leggings tiro alto en tejido elástico/transpirable. Tallas: SM, LXL.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ====== /r001–r024 ====== -->
+    </div>
+
+    <!-- Load more -->
+    <div class="text-center mt-5">
+      <button id="load-more" class="btn btn-outline-secondary">Cargar más productos</button>
+    </div>
+  </main>
+
+  <!-- ========================= QUICK VIEW MODAL ========================= -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1" role="dialog" aria-labelledby="quickViewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content qv2-modal">
+        <div class="modal-body p-0">
+          <div id="qv2" class="qv2"><!-- Uiverse card se monta por JS --></div>
+        </div>
+        <div class="modal-footer qv2-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= CART MODAL ========================= -->
+  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tu carrito</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <ul id="cart-items" class="list-group list-group-flush"></ul>
+
+          <div id="cart-empty" class="cart-empty" style="display:none;">
+            <i class="fa-regular fa-face-smile"></i>
+            <h5 id="cartLabel" class="modal-title">Tu carrito</h5>
+          </div>
+
+          <div class="coupon-box">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <strong>Cupones</strong>
+            </div>
+            <form class="coupon-form" action="#">
+              <input id="coupon-input" class="coupon-input" type="text" placeholder="¿Tienes cupón? (p. ej. CHIGUI10)">
+              <button id="coupon-apply" class="btn btn-primary" type="submit">Aplicar</button>
+            </form>
+            <div id="coupon-feedback" class="coupon-feedback"></div>
+          </div>
+
+          <div class="cart-breakdown">
+            <div class="ship-box">
+              <div id="ship-progress" class="ship-bar"><span></span></div>
+              <div id="ship-text" class="ship-text">Empieza tu pedido para ver el envío gratis.</div>
+            </div>
+
+            <div class="row-line"><span>Subtotal</span><span id="sub-amount">—</span></div>
+            <div class="row-line"><span>Descuento</span><span id="disc-amount">—</span></div>
+            <div class="row-line"><span>Envío</span><span id="ship-amount">—</span></div>
+            <div class="row-line total"><span>Total</span><span id="cart-total">$ 0</span></div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="cart-clear-btn" class="btn btn-outline-danger mr-auto">Vaciar carrito</button>
+          <a id="checkout-whatsapp" class="btn btn-primary" href="#" target="_blank"><i class="fab fa-whatsapp"></i> Pagar por WhatsApp</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Seguir comprando</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= WHATSAPP FLOAT ========================= -->
+  <a id="whatsapp-float" class="whatsapp-float d-none d-md-flex align-items-center justify-content-center"
+     href="https://wa.me/573124999533?text=Hola%20CHIGUI%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos"
+     target="_blank" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp fa-2x text-white"></i>
+  </a>
+
+  <!-- ========================= FOOTER ========================= -->
+  <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+    <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="text-white text-uppercase mb-4">Get In Touch</h4>
+        <p><i class="fa fa-map-marker-alt mr-2"></i>Kra. 24 No 23A-11, Yopal Casanare, Colombia</p>
+        <p><i class="fa fa-phone-alt mr-2"></i>+57 3124999533</p>
+        <p class="m-0"><i class="fa fa-envelope mr-2"></i>chiguisuplementos@gmail.com</p>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="text-white text-uppercase mb-4">Follow us</h4>
+        <p>Encuéntranos en nuestras redes</p>
+        <div class="d-flex justify-content-start">
+          <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.facebook.com/share/16xL4teUJD/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.instagram.com/chiguisuplementos?igsh=MTY1NWh3MGdvMHplMA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.tiktok.com/@chigui.suplemento?_t=ZS-8yqtyCVGKor&_r=1" target="_blank"><i class="fab fa-tiktok "></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="text-white text-uppercase mb-4">Open Hours</h4>
+        <div>
+          <h6 class="text-white text-uppercase">Lunes - Viernes</h6>
+          <p>8:00 AM - 9:00 PM</p>
+          <h6 class="text-white text-uppercase">Sábado - Domingo</h6>
+          <p>2:00 PM - 9:00 PM</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="text-white text-uppercase mb-4">¿Quieres saber más?</h4>
+        <p>Contáctanos por nuestro chat personalizado</p>
+      </div>
+    </div>
+    <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256,256,256,.1) !important;">
+      <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">CHIGUI</a>. All Rights Reserved.</p>
+      <p class="m-0 text-white">Designed by <a class="font-weight-bold" href="#">Tecno Fishware</a></p>
+    </div>
+  </div>
+
+  <!-- ========================= SCRIPTS ========================= -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Lógica (búsqueda, orden, categorías, quick view y carrito) -->
+  <script src="js/products.js"></script>
+</body>
+</html>
