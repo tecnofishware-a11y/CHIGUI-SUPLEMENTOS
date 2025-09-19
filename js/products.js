@@ -1,6 +1,6 @@
 /* =========================================================
    CHIGUI – Productos (JS)
-   Búsqueda, filtros, QuickView, carrito y WhatsApp
+   Búsqueda, filtros, QuickView, carrito, WhatsApp y BackToTop
 ========================================================= */
 (function ($) {
   'use strict';
@@ -521,6 +521,58 @@
     }
     renderCart();
   });
+
+  /* -------------------- Back to Top -------------------- */
+  (function backToTopInit () {
+    // 1) Inyecta el botón si no existe
+    if (!$('.back-to-top').length) {
+      $('body').append(
+        '<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="Volver arriba">' +
+          '<i class="fa fa-angle-double-up"></i>' +
+        '</a>'
+      );
+    }
+
+    // 2) Posiciona el botón por encima del WhatsApp
+    function positionBackToTop () {
+      var $btn = $('.back-to-top');
+      if (!$btn.length) return;
+      var $wa  = $('#whatsapp-float');
+
+      var gap   = 12;                         // separación entre ambos
+      var right = 18;                         // alineado con WhatsApp
+      var bottom = 30;                        // valor por defecto si no hay WhatsApp
+
+      if ($wa.length && $wa.is(':visible')) {
+        var waH = $wa.outerHeight() || 56;   // alto del botón de WhatsApp
+        var waB = parseInt($wa.css('bottom'), 10); if (isNaN(waB)) waB = 18;
+        var waR = parseInt($wa.css('right'), 10);  if (isNaN(waR)) waR = 18;
+        bottom = waB + waH + gap;            // coloca el back-to-top encima del WhatsApp
+        right  = waR;
+      }
+      $btn.css({ right: right + 'px', bottom: bottom + 'px', zIndex: 1062 });
+    }
+
+    // 3) Mostrar/ocultar con el scroll
+    $(window).on('scroll.backToTop', function () {
+      if ($(this).scrollTop() > 120) {
+        $('.back-to-top').stop(true, true).fadeIn('fast');
+      } else {
+        $('.back-to-top').stop(true, true).fadeOut('fast');
+      }
+    });
+
+    // 4) Click → subir arriba (con fallback de easing)
+    $(document).on('click', '.back-to-top', function (e) {
+      e.preventDefault();
+      var easing = ($.easing && $.easing['easeInOutExpo']) ? 'easeInOutExpo' : 'swing';
+      $('html, body').stop().animate({ scrollTop: 0 }, 800, easing);
+    });
+
+    // 5) Reposicionar en resize y al iniciar
+    $(window).on('resize.backToTop', positionBackToTop);
+    positionBackToTop();
+  })();
 
   /* -------------------- Owl Carousel (categorías) -------------------- */
   if ($.fn.owlCarousel && $('.cat-carousel').length) {

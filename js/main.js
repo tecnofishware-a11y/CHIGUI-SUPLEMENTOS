@@ -31,6 +31,8 @@
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
+
+    
     
 
     // Date and time picker

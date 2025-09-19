@@ -1,0 +1,210 @@
+/* =========================================================
+   CHIGUI — contact.css (versión PRO)
+   Card con borde degradado, micro-interacciones, estados
+   de validación y botón con “sheen”. Sin cambios en el HTML.
+========================================================= */
+
+:root{
+  --surface: #ffffff;
+  --surface-2: #fffaf4;
+  --bg: #f7f4f0;
+  --text: #231f1b;
+  --muted: #6f6a66;
+
+  --accent: #c49b63;
+  --accent-600:#a37b46;
+  --accent-700:#8b6a3c;
+
+  --radius: 18px;
+  --shadow-xs: 0 2px 8px rgba(0,0,0,.06);
+  --shadow-sm: 0 6px 16px rgba(0,0,0,.10);
+  --shadow-md: 0 12px 28px rgba(0,0,0,.16);
+}
+
+/* -------- Tarjeta del formulario (glass + borde degradado) -------- */
+.contact-form{
+  position: relative;
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(196,155,99,.12), transparent 40%),
+    linear-gradient(180deg, var(--surface-2) 0%, #fff 100%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(18px, 2.4vw, 26px);
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+/* Franja de marca sutil a la izquierda (coherente con el sitio) */
+.contact-form::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:6px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-700) 100%);
+  opacity:.25;
+}
+
+/* Borde degradado “premium” (sin interferir con la franja) */
+.contact-form::after{
+  content:"";
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  padding:1px;
+  background:
+    linear-gradient(135deg, rgba(196,155,99,.55), rgba(196,155,99,.08) 38%, rgba(255,255,255,0) 65%),
+    linear-gradient(180deg, rgba(196,155,99,.22), rgba(196,155,99,.06));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; 
+  mask-composite: exclude;
+}
+
+/* Hover/lift leve del card */
+@media (hover:hover){
+  .contact-form{ transition: transform .18s ease, box-shadow .22s ease; }
+  .contact-form:hover{ transform: translateY(-2px); box-shadow: var(--shadow-md); }
+}
+
+/* Mensajes de envío */
+#success{ margin-bottom: 10px; font-weight: 600; }
+
+/* -------- Controles -------- */
+.control-group{ position: relative; margin-bottom: 16px; }
+.control-group:focus-within{ z-index: 1; }
+
+/* Línea activa animada debajo del input */
+.control-group::after{
+  content:"";
+  position:absolute; left:14px; right:14px; bottom:4px; height:2px;
+  background: linear-gradient(90deg, var(--accent-700), var(--accent));
+  border-radius:999px; transform: scaleX(0);
+  transform-origin: left; opacity:0;
+  transition: transform .22s ease, opacity .22s ease;
+}
+.control-group:focus-within::after{ transform: scaleX(1); opacity: .9; }
+
+/* Inputs/textarea — pill + icono a la izquierda */
+.contact-form .form-control{
+  background: #fff !important;
+  color: #2b2a28;
+  border: 1.6px solid #e8dfd5;
+  border-radius: 14px;
+  padding: 14px 16px 14px 46px;   /* espacio para icono */
+  line-height: 1.35;
+  box-shadow: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .12s ease;
+  background-repeat: no-repeat;
+  background-position: 14px center;
+  background-size: 18px 18px;
+}
+.contact-form .form-control:hover{ border-color:#e3d6c7; }
+.contact-form .form-control:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 .22rem rgba(196,155,99,.18) !important;
+  background-color:#fff;
+  transform: translateY(-1px);
+}
+.contact-form .form-control::placeholder{ color: #9a948e; opacity:.95; }
+
+.contact-form textarea.form-control{
+  min-height: 140px; resize: vertical;
+  background-position: 14px 18px;
+}
+
+/* -------- Iconos inline (SVG livianos) -------- */
+#name{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%239a948e' viewBox='0 0 24 24'><path d='M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z'/></svg>");
+}
+#email{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%239a948e' viewBox='0 0 24 24'><path d='M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z'/></svg>");
+}
+#subject{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%239a948e' viewBox='0 0 24 24'><path d='M3 7h18v2H3V7Zm0 4h12v2H3v-2Zm0 4h18v2H3v-2Z'/></svg>");
+}
+#message{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%239a948e' viewBox='0 0 24 24'><path d='M21 6H3v12h5v4l4-4h9V6z'/></svg>");
+}
+
+/* -------- Estados de validación (jqBootstrapValidation) -------- */
+.control-group .help-block.text-danger{
+  margin: 6px 4px 0;
+  font-size: .88rem;
+  color: #d33 !important;
+}
+
+/* micro-shake cuando hay error (una vez al aplicar la clase) */
+@keyframes chg-shake{ 20%{transform:translateX(-3px)} 40%{transform:translateX(3px)} 60%{transform:translateX(-2px)} 80%{transform:translateX(2px)} }
+.control-group.has-error .form-control,
+.form-control.is-invalid{
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 .2rem rgba(220,53,69,.18) !important;
+  animation: chg-shake .28s ease;
+}
+
+/* check verde a la derecha cuando válido (usa :has si está disponible) */
+@supports(selector(:has(*))){
+  .control-group:has(.form-control.is-valid)::before{
+    content:"";
+    position:absolute; right:18px; top:50%; width:18px; height:18px; transform:translateY(-50%);
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%2328a745' viewBox='0 0 24 24'><path d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>") no-repeat center/18px 18px;
+    opacity:.95;
+  }
+}
+
+/* -------- Botón enviar (pill + sheen y ripple) -------- */
+.contact-form #sendMessageButton.btn{
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color:#fff !important;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 12px 22px;
+  box-shadow: 0 10px 22px rgba(196,155,99,.22);
+  position: relative; overflow: hidden;
+  transition: transform .14s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.contact-form #sendMessageButton.btn:hover{
+  transform: translateY(-1px);
+  background: var(--accent-600) !important;
+  border-color: var(--accent-600) !important;
+  box-shadow: 0 14px 26px rgba(196,155,99,.28);
+}
+/* sheen */
+.contact-form #sendMessageButton.btn::after{
+  content:""; position:absolute; inset:-2px;
+  background: linear-gradient(75deg, transparent 0%, rgba(255,255,255,.5) 10%, transparent 20% 100%);
+  transform: translateX(-120%);
+  transition: transform .8s ease;
+  pointer-events:none; mix-blend-mode: screen; opacity:.55;
+}
+.contact-form #sendMessageButton.btn:hover::after{ transform: translateX(120%); }
+/* ripple on active (sólo mouse) */
+@media (hover:hover){
+  .contact-form #sendMessageButton.btn:active{ transform: translateY(0); }
+}
+
+/* -------- Mapa armonizado -------- */
+.container iframe{
+  border-radius: 16px;
+  box-shadow: var(--shadow-xs);
+  border: 1px solid #efe2d2;
+  background: #fff;
+}
+
+/* -------- Títulos sección -------- */
+.section-title h4{ letter-spacing: .35em !important; }
+.section-title h1, .section-title .display-4{
+  font-weight: 800; letter-spacing: .3px; color: var(--text);
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 991.98px){
+  .contact-form{ padding: 16px; border-radius: 16px; }
+}
+@media (max-width: 575.98px){
+  .contact-form{ padding: 14px; border-radius: 14px; }
+  .container iframe{ border-radius: 14px; }
+}
+
+/* -------- Accesibilidad -------- */
+.contact-form .form-control:focus-visible{ outline: 0; }
+.contact-form .form-control::-ms-reveal,
+.contact-form .form-control::-ms-clear{ display:none; }

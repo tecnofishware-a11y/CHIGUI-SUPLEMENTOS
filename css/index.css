@@ -25,6 +25,13 @@
   --hero-reveal: 1600ms;   /* velocidad de apertura */
   --hero-stagger: 220ms;   /* desfase entre elementos */
   --hero-ken: 36000ms;     /* Ken Burns (más grande = más lento) */
+
+  /* FAB WhatsApp */
+  --fab-size: 56px;          /* tamaño del botón de WhatsApp en desktop */
+  --fab-size-sm: 54px;       /* tamaño en móvil (si lo usas) */
+  --fab-gap: 14px;           /* espacio entre botones */
+  --fab-margin: 18px;        /* margen a bordes */
+
 }
 
 /* ---------- Base y tipografía ---------- */
@@ -429,3 +436,42 @@ body.hero-no-anim .hero-caption .hero-title::after{ display:none; }
 .products-cta .section-title::after{
   content: none !important;
 }
+
+/* ===== WhatsApp FAB idéntico al de products + back-to-top sin superponerse ===== */
+.whatsapp-fab{
+position:fixed;
+right:var(--fab-margin);
+bottom:var(--fab-margin);
+width:var(--fab-size);
+height:var(--fab-size);
+border-radius:50%;
+background:#25D366;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 12px 24px rgba(0,0,0,.18);
+z-index:1045;
+-webkit-tap-highlight-color:transparent;
+transition:transform .18s ease, box-shadow .25s ease;
+}
+.whatsapp-fab:hover{ transform:translateY(-2px); box-shadow:0 16px 30px rgba(0,0,0,.22); }
+.whatsapp-fab i{ font-size:28px; line-height:1; }
+
+/* Back-to-top colocado arriba del WA y con z-index menor */
+.back-to-top{
+position:fixed;
+right:var(--fab-margin);
+bottom:calc(var(--fab-margin) + var(--fab-size) + var(--fab-gap));
+z-index:1040; /* debajo del WA */
+border-radius:50%;
+animation:action 1s infinite alternate;
+display:none;
+}
+@keyframes action{0%{transform:translateY(0)}100%{transform:translateY(-15px)}}
+
+@media (max-width:767.98px){
+:root{ --fab-size:54px; --fab-margin:16px; --fab-gap:12px; }
+}
+
+
